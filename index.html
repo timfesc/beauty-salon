@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMINA — Салон красоты премиум-класса</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #1a1816;
+            --light: #f9f8f6;
+            --rose: #d4a5a5;
+            --gold: #b89968;
+            --cream: #ede9e3;
+            --text: #3d3d3d;
+            --subtle: #c0bab5;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f9f8f6 0%, #ede9e3 100%);
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 165, 165, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(184, 153, 104, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(40px, -40px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            color: var(--dark);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 40px;
+            background: var(--dark);
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.4s ease;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background: var(--rose);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 165, 165, 0.3);
+        }
+
+        /* Services Section */
+        .services-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--dark);
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 1px solid #f0ebe5;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 165, 165, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            background: #fdfbf9;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border-color: var(--rose);
+        }
+
+        .service-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            min-height: 50px;
+        }
+
+        .service-duration {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .service-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--rose);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .book-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 2px solid var(--dark);
+            background: transparent;
+            color: var(--dark);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 2px;
+        }
+
+        .book-btn:hover {
+            background: var(--dark);
+            color: var(--light);
+            transform: scale(1.05);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 24, 22, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 4px;
+            padding: 50px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+            animation: slideUp 0.4s ease;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+        }
+
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .modal-price {
+            color: var(--rose);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e5dfd7;
+            border-radius: 2px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: #fdfbf9;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--rose);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(212, 165, 165, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .time-slot {
+            padding: 10px;
+            border: 1px solid #e5dfd7;
+            background: #fdfbf9;
+            cursor: pointer;
+            text-align: center;
+            font-size: 0.9rem;
+            border-radius: 2px;
+            transition: all 0.2s ease;
+        }
+
+        .time-slot:hover {
+            border-color: var(--rose);
+            background: #fff8f7;
+        }
+
+        .time-slot.selected {
+            background: var(--dark);
+            color: white;
+            border-color: var(--dark);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--dark);
+            color: var(--light);
+            border: none;
+            border-radius: 2px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--rose);
+            transform: scale(1.02);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-left: 4px solid #2e7d32;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--dark);
+            color: var(--light);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .info-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .info-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .info-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-item p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f0e0c;
+            color: var(--light);
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>LUMINA</h1>
+            <p>Салон красоты премиум-класса. Забота о вашей красоте с душой</p>
+            <button class="cta-button" onclick="document.querySelector('.services-section').scrollIntoView({behavior: 'smooth'})">Записаться</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <h2 class="section-title">Наши услуги</h2>
+        
+        <div class="services-grid" id="servicesGrid">
+            <!-- Динамически заполняется JavaScript -->
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="info-content">
+            <h2>О салоне LUMINA</h2>
+            <p>
+                Мы специализируемся на создании вашего неповторимого образа. 
+                Наша команда профессионалов использует только премиум-продукты и последние техники.
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📍 Адрес</h3>
+                    <p>Франкфурт-на-Майне<br>Altstadt, 42</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📞 Телефон</h3>
+                    <p>+49 69 123 456<br>+49 69 654 321</p>
+                </div>
+                <div class="contact-item">
+                    <h3>🕐 Время работы</h3>
+                    <p>Пн-Пт: 10:00-20:00<br>Сб: 10:00-18:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            
+            <div class="success-message" id="successMessage">
+                ✓ Спасибо! Ваша запись подтверждена. Мы отправили подтверждение на почту.
+            </div>
+
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <p class="modal-price" id="modalPrice"></p>
+            
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="customerName">Ваше имя *</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerEmail">Email *</label>
+                    <input type="email" id="customerEmail" name="customerEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerPhone">Телефон *</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" placeholder="+49 69 123 456" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookingDate">Дата записи *</label>
+                    <input type="date" id="bookingDate" name="bookingDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Время записи *</label>
+                    <div class="time-slots" id="timeSlots">
+                        <!-- Динамически заполняется JavaScript -->
+                    </div>
+                    <input type="hidden" id="selectedTime" name="selectedTime" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Особые пожелания</label>
+                    <textarea id="notes" name="notes" placeholder="Расскажите о ваших пожеланиях и пожеланиях..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Подтвердить запись</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 LUMINA Beauty Salon. Все права защищены. | Франкфурт-на-Майне</p>
+    </footer>
+
+    <script>
+        // Services Data
+        const servicesData = [
+            {
+                id: 1,
+                name: 'Укладка волос',
+                emoji: '💇‍♀️',
+                description: 'Профессиональная укладка с использованием премиум-средств для идеального результата',
+                duration: '60 мин',
+                price: 45
+            },
+            {
+                id: 2,
+                name: 'Окрашивание волос',
+                emoji: '🎨',
+                description: 'Полное окрашивание, тонирование или омбре с консультацией колориста',
+                duration: '120 мин',
+                price: 85
+            },
+            {
+                id: 3,
+                name: 'Маникюр',
+                emoji: '💅',
+                description: 'Классический или гель-лак маникюр с дизайном на выбор',
+                duration: '45 мин',
+                price: 35
+            },
+            {
+                id: 4,
+                name: 'Педикюр',
+                emoji: '👣',
+                description: 'Уход за ногами, педикюр с лечебными компонентами',
+                duration: '60 мин',
+                price: 40
+            },
+            {
+                id: 5,
+                name: 'Макияж',
+                emoji: '✨',
+                description: 'Профессиональный макияж для особых событий или повседневный',
+                duration: '45 мин',
+                price: 50
+            },
+            {
+                id: 6,
+                name: 'Уход за кожей',
+                emoji: '🌸',
+                description: 'Комплексный уход с использованием премиум косметики',
+                duration: '75 мин',
+                price: 60
+            }
+        ];
+
+        let selectedService = null;
+        let selectedTimeSlot = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderServices();
+            setupDatePicker();
+        });
+
+        // Render Services
+        function renderServices() {
+            const grid = document.getElementById('servicesGrid');
+            grid.innerHTML = '';
+
+            servicesData.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.innerHTML = `
+                    <span class="service-emoji">${service.emoji}</span>
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                    <span class="service-duration">⏱️ ${service.duration}</span>
+                    <div class="service-price">€${service.price}</div>
+                    <button class="book-btn" onclick="openBookingModal(${service.id})">Записаться</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Open Booking Modal
+        function openBookingModal(serviceId) {
+            selectedService = servicesData.find(s => s.id === serviceId);
+            if (!selectedService) return;
+
+            document.getElementById('modalTitle').textContent = selectedService.name;
+            document.getElementById('modalPrice').textContent = `€${selectedService.price}`;
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('bookingForm').style.display = 'block';
+            
+            generateTimeSlots();
+            document.getElementById('bookingModal').classList.add('active');
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('bookingModal').classList.remove('active');
+            document.getElementById('bookingForm').reset();
+            selectedTimeSlot = null;
+        }
+
+        // Generate Time Slots
+        function generateTimeSlots() {
+            const slotsContainer = document.getElementById('timeSlots');
+            slotsContainer.innerHTML = '';
+            const times = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
+            
+            times.forEach(time => {
+                const slot = document.createElement('div');
+                slot.className = 'time-slot';
+                slot.textContent = time;
+                slot.onclick = () => selectTimeSlot(slot, time);
+                slotsContainer.appendChild(slot);
+            });
+        }
+
+        // Select Time Slot
+        function selectTimeSlot(element, time) {
+            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedTimeSlot = time;
+            document.getElementById('selectedTime').value = time;
+        }
+
+        // Setup Date Picker
+        function setupDatePicker() {
+            const input = document.getElementById('bookingDate');
+            const today = new Date();
+            today.setDate(today.getDate() + 1);
+            const min = today.toISOString().split('T')[0];
+            input.min = min;
+        }
+
+        // Handle Form Submit
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!selectedTimeSlot) {
+                alert('Пожалуйста, выберите время');
+                return;
+            }
+
+            const submitBtn = e.target.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+
+            const formData = {
+                serviceName: selectedService.name,
+                servicePrice: selectedService.price,
+                serviceDuration: selectedService.duration,
+                customerName: document.getElementById('customerName').value,
+                customerEmail: document.getElementById('customerEmail').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                bookingDate: document.getElementById('bookingDate').value,
+                bookingTime: selectedTimeSlot,
+                notes: document.getElementById('notes').value,
+                bookingSubmissionTime: new Date().toLocaleString('ru-RU')
+            };
+
+            try {
+                const response = await fetch('/api/send-booking', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    document.getElementById('bookingForm').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('show');
+                    setTimeout(() => closeModal(), 3000);
+                } else {
+                    alert('Ошибка при отправке. Попробуйте еще раз.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Подтвердить запись';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Ошибка сети. Проверьте подключение.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Подтвердить запись';
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('bookingModal').addEventListener('click', (e) => {
+            if (e.target.id === 'bookingModal') closeModal();
+        });
+    </script>
+</body>
+</html>
