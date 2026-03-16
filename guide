@@ -1,0 +1,165 @@
+# 💇‍♀️ Beauty Salon Booking Website - Setup Guide
+
+Perfect! Now let's deploy your **beauty salon booking website**!
+
+---
+
+## ✅ SETUP (2 steps):
+
+### Step 1: Create New GitHub Repository
+
+1. Go to https://github.com/new
+2. Repository name: `beauty-salon` (or any name you like)
+3. Click **"Create repository"**
+
+---
+
+### Step 2: Add Files to GitHub
+
+#### FILE 1: `index.html`
+1. Click **"Add file"** → **"Create new file"**
+2. Name: `index.html`
+3. Copy code from: `beauty-salon-index.html` (file I created)
+4. Paste everything
+5. **"Commit changes"**
+
+#### FILE 2: `api/send-booking.js`
+1. Click **"Add file"** → **"Create new file"**
+2. Name: `api/send-booking.js`
+3. Copy code from: `send-booking.js` (file I created)
+4. Paste everything
+5. **"Commit changes"**
+
+---
+
+## 🚀 Deploy to Vercel
+
+### Step 1: Connect to Vercel
+1. Go to https://vercel.com/
+2. Click **"New Project"**
+3. Select your **beauty-salon** GitHub repo
+4. Click **"Import"**
+
+### Step 2: Add Environment Variable
+1. In Vercel, click **"Settings"**
+2. Click **"Environment Variables"**
+3. Add new variable:
+   - **Name**: `RESEND_API_KEY`
+   - **Value**: Your Resend API key (re_abc123...)
+4. Click **"Save"**
+5. Click **"Redeploy"** to apply changes
+
+---
+
+## ✅ DONE!
+
+Your beauty salon booking website is now LIVE! 💇‍♀️
+
+You'll get a URL like: `https://beauty-salon.vercel.app`
+
+---
+
+## 💅 SERVICES INCLUDED:
+
+1. **Укладка волос** (Hair Styling) - €45
+2. **Окрашивание волос** (Hair Coloring) - €85
+3. **Маникюр** (Manicure) - €35
+4. **Педикюр** (Pedicure) - €40
+5. **Макияж** (Makeup) - €50
+6. **Уход за кожей** (Skincare) - €60
+
+---
+
+## 📧 EMAILS GO TO:
+
+1. **Customer Email** - Gets booking confirmation with all details
+2. **Manager Email** (timfesc@gmail.com) - Gets notification about new booking
+
+---
+
+## ✨ CUSTOMIZE:
+
+Want to:
+- Change email address? → Search for `timfesc@gmail.com` in `send-booking.js` and update
+- Add/remove services? → Edit `servicesData` array in HTML
+- Change prices? → Modify `price` field for each service
+- Change colors? → Edit CSS variables in `<style>` section:
+  - `--rose`: Main accent color (default: #d4a5a5)
+  - `--gold`: Secondary accent (default: #b89968)
+  - `--dark`: Text color (default: #1a1816)
+- Change business info? → Update info section with your salon details
+
+---
+
+## 🎨 DESIGN FEATURES:
+
+- **Luxury minimalist aesthetic** with elegant serif fonts
+- **Beautiful animations** and smooth transitions
+- **Responsive design** for mobile, tablet, desktop
+- **Modal booking system** with time slot selection
+- **Beautiful email templates** for both customer and manager
+- **Service filtering** with pricing information
+- **Time slot picker** (10:00-19:00)
+- **Special requests** field for customer notes
+
+---
+
+## 🔧 TECHNICAL STACK:
+
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript
+- **Backend**: Vercel Serverless Functions (Node.js)
+- **Email Service**: Resend API
+- **Hosting**: Vercel
+- **Version Control**: GitHub
+
+---
+
+## 📋 BOOKING FLOW:
+
+1. Customer selects a service from the grid
+2. Modal opens with service details and price
+3. Customer fills in:
+   - Name
+   - Email
+   - Phone number
+   - Booking date (tomorrow or later)
+   - Time slot (10 options)
+   - Optional special requests
+4. Form is submitted to API
+5. API sends:
+   - Confirmation email to customer
+   - Notification email to manager
+6. Success message is shown
+
+---
+
+## 🌐 BUSINESS INFORMATION:
+
+Default info in the site:
+- **Name**: LUMINA Beauty Salon
+- **Address**: Altstadt, 42, Frankfurt am Main
+- **Phone**: +49 69 123 456 / +49 69 654 321
+- **Hours**: Mon-Fri: 10:00-20:00 | Sat: 10:00-18:00
+
+Update these in the info section!
+
+---
+
+## 🚀 DEPLOYMENT CHECKLIST:
+
+- [ ] Created GitHub repo
+- [ ] Added `index.html` file
+- [ ] Added `api/send-booking.js` file
+- [ ] Connected to Vercel
+- [ ] Added RESEND_API_KEY environment variable
+- [ ] Redeployed project
+- [ ] Updated salon name, address, phone
+- [ ] Updated manager email in send-booking.js
+- [ ] Customized services list
+- [ ] Changed colors if desired
+
+---
+
+**Your beauty salon booking system is ready! 💇‍♀️✨**
+
+Start taking bookings and grow your business! 💄💅🌸
